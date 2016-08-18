@@ -29,3 +29,42 @@ cacheSolve <- function(sq_M, ...) {
 }
 
 
+## excution result
+> 
+> source("makeMatrix.R")
+> mk_invMatrix<- makeCacheMatrix(matrix(8:11, 2, 2))
+> mk_invMatrix$get()
+     [,1] [,2]
+[1,]    8   10
+[2,]    9   11
+> mk_invMatrix$getInverse()
+NULL
+> cacheSolve(mk_invMatrix)
+     [,1] [,2]
+[1,] -5.5    5
+[2,]  4.5   -4
+> mk_invMatrix$getInverse()
+     [,1] [,2]
+[1,] -5.5    5
+[2,]  4.5   -4
+> mk_invMatrix$set(matrix(c(14, 9,13,7), 2, 2))
+> mk_invMatrix$get()
+     [,1] [,2]
+[1,]   14   13
+[2,]    9    7
+> mk_invMatrix$getInverse()
+NULL
+> cacheSolve(mk_invMatrix)
+           [,1]       [,2]
+[1,] -0.3684211  0.6842105
+[2,]  0.4736842 -0.7368421
+> cacheSolve(mk_invMatrix)
+getting cached data
+           [,1]       [,2]
+[1,] -0.3684211  0.6842105
+[2,]  0.4736842 -0.7368421
+> mk_invMatrix$getInverse()
+           [,1]       [,2]
+[1,] -0.3684211  0.6842105
+[2,]  0.4736842 -0.7368421
+> 
